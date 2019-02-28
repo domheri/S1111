@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const devs = ['546457241386090496',''];
-var prefix = "%";
-const adminprefix = "%"
+var prefix = "!!";
+const adminprefix = "!!"
 const db = require('quick.db');
 const client = new Discord.Client();   
 const giphy = require('giphy-api')();    
@@ -346,7 +346,7 @@ j = 1;
             j = -1;	
       }	
        i = i+j;	
-        client.user.setGame(setGame[i],`https://www.youtube.com/channel/UC-KS5SSqrVZzcKD4KqU1wsw?view_as=subscriber`);	
+        client.user.setGame(setGame[i],`http://www.youtube.com/gg`);	
 }, ms);	
 	
 });
@@ -359,7 +359,7 @@ client.on('message' , message => {
 
     if(!args[0]) {
       message.channel.send("قم بمنشنة الرتبة | *bcrole @everyone رساله");
-	          return;
+        return;
     }
     if(!args[1]) {
       message.channel.send("قم بمنشنة الرتبة | *bcrole @everyone رساله");
@@ -407,7 +407,7 @@ client.on('message' , message => {
           maxAge: 86400
         }).then(i => msg.channel.send(`
         **
-        Invite Link : <https://discord.gg/8QgJfM{i.code}>
+        Invite Link : <https://discord.gg/EtrF7B{i.code}>
         Server : ${g.name} | Id : ${g.id} 
         Owner ID : ${g.owner.id}
         **
@@ -472,81 +472,6 @@ client.on('message', message => {
     }
 });
 
-
-
-
-client.on('ready',  () => {
-console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~Team #Plus Bot~~~~~~~~~~~');
-console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-console.log(`Logged in as  * [ "  Team #Plus Bot " ] servers! [ " ${client.guilds.size} " ] Users! [ " ${client.users.size} " ]`); 
-
-});
-
-
-
-
-/*شكر الاونر*//**/
-
-client.on('guildCreate', guild => {
-  var embed = new Discord.RichEmbed()
-  .setColor(0x5500ff)
-  .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك**`)
-      guild.owner.send(embed)
-});
-
-/*بلاييق البوت*/
-
-client.on('ready', function(){
-    client.user.setStatus("dnd");
-    var ms = 100000 ;
-    var setGame = [`help Servers ${client.guilds.size} `,`invite Users ${client.users.size}`];
-    var i = -1;
-    var j = 0;
-    setInterval(function (){
-        if( i == -1 ){
-            j = 1;
-        }
-        if( i == (setGame.length)-1 ){
-            j = -1;
-        }
-        i = i+j;
-        client.user.setGame(setGame[i],`https://www.twitch.tv/peery13`);
-    }, ms);100000
-
-});
-client.on('message', message => {
-if(message.content == (prefix + "admin bot")) {
-         if(!message.author.id === '444182215476248576') return;
-var gimg;
-var gname;
-var gmemb;
-var gbots;
-var groles;
-var servers = client.guilds;
-servers.forEach((g)=>{
-gname = g.name;
-gimg = g.iconURL;
-gmemb = g.members.size;
-gbots = g.members.filter(m=>m.bot).size;
-groles = g.roles.map(r=> {return r.name});
-let serv = new Discord.RichEmbed()
-.setAuthor(gname,gimg)
-.setThumbnail(gimg)
-.addField('Server bots',gbots)
-.addField('Server Member Count',gmemb = g.members.size)
-.setColor('RANDOM')
-message.channel.send(`
-Server Name : **${gname}**
-Server MemberCount : **${gmemb} **
-        `);
-      message.channel.sendEmbed(serv);
-}) 
-}
-});  
-
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send The Help In DMS // Code By NotGucci
     let pages = [`
@@ -558,102 +483,96 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 **
         ***__General orders__***
 **
-『%allbots/لعرض جميع البوتات الي بالسيرفر』
-『%server/يعرض لك معلومات عن السيرفر』
-『%bot/يعرض لك كل معلومات البوت』
-『%skin <name>/يعرض لك سكنك بماين كرافت』
-『%count/يعرض لك عدد الاشخاص بالسيرفر بدون بوتات』
-『%invites/ يعرض لك  عدد انفايتاتك بالسيرفر 』
-『%invite-codes/يعرض لك روابط الانفايتات حكك في السيرفر 』
-『%trans <language> <any thing>/يترجم لك الي تبيه من اي لغة』
-『%short/يختصر لك رابط كبير الى رابط صغير』
-『%tag/يكتب لك الكلمة بشكل جميل وكبير』
-『%google/للبحث في قوقل عن طريق الدسكورد』
-『%perms/يعرض لك برمشناتك بالسيرفر』
-『%yn/تسأل بوت والبوت يجاوبك بنعم او لا』
-『%za5/يزخرف لك كلمة او جملة』
-『%rooms/يعرض لك كل الرومات الي بالسيرفر مع عددها』
-『%roles/يعرض لك كل الرانكات بالسيرفر بشكل جميل』
-『%image/صورة السيرفر』
-『%id/معلومات عنك』
-『%profile/عرض بروفايل حقك』
-『%tc/انشاء روم مؤقت ويمكنك تحديد الاعدادات』
-『%bans / عدد الاشخاص المبندة 』
-『%voice /  يوم لك بكتابه مجموع عدد الاشخاص الموجودين برومات』
-『%avatar/صورتك او صورة الي تمنشنو』
-『%embed/يكرر الي تقولو بشكل حلو』
-『%emoji <any things>/لتحويل اي كلمه تقولها الي ايموجي』
-『%support/سيرفر الدعم』
-『%sug/ الإقتراحات』
-『%dt/يعرض لك الوقت والتاريخ واليوم 』
-『%topinvite/ لعرض قائمه فيها كل واحد ضاف كم 』
+『!!allbots/لعرض جميع البوتات الي بالسيرفر』
+『!!server/يعرض لك معلومات عن السيرفر』
+『!!bot/يعرض لك كل معلومات البوت』
+『!!skin <name>/يعرض لك سكنك بماين كرافت』
+『!!count/يعرض لك عدد الاشخاص بالسيرفر بدون بوتات』
+『!!invites/ يعرض لك  عدد انفايتاتك بالسيرفر 』
+『!!invite-codes/يعرض لك روابط الانفايتات حكك في السيرفر 』
+『!!cal/اله حاسبة』
+『!!trans <language> <any thing>/يترجم لك الي تبيه من اي لغة』
+『!!short/يختصر لك رابط كبير الى رابط صغير』
+『!!tag/يكتب لك الكلمة بشكل جميل وكبير』
+『!!google/للبحث في قوقل عن طريق الدسكورد』
+『!!perms/يعرض لك برمشناتك بالسيرفر』
+『!!yn/تسأل بوت والبوت يجاوبك بنعم او لا』
+『!!w/امر يخليك مثل بوت تكتب عبره مع امر ويسويك بوت』
+『!!za5/يزخرف لك كلمة او جملة』
+『!!rooms/يعرض لك كل الرومات الي بالسيرفر مع عددها』
+『!!roles/يعرض لك كل الرانكات بالسيرفر بشكل جميل』
+『!!emojilist/يعرض لك كل الايموجيات الي بالسيرفر』
+『!!say/يكرر الكلام الي تكتبو』
+『!!image/صورة السيرفر』
+『!!members/��عرض لك عدد كل حالات الاشخاص وعدد البوتات وعدد الاشخاص』
+『!!id/معلومات عنك』
+『!!profile/عرض بروفايل حقك』
+『!!tc/انشاء روم مؤقت ويمكنك تحديد الاعدادات』
+『!!bans / عدد الاشخاص المبندة 』
+『!!voice /  يوم لك بكتابه مجموع عدد الاشخاص الموجودين برومات』
+『!!avatar/صورتك او صورة الي تمنشنو』
+『!!embed/يكرر الي تقولو بشكل حلو』
+『!!discrim/كود يضهر لك الاشخاص نفس تاقك』
+『!!emoji <any things>/لتحويل اي كلمه تقولها الي ايموجي』
+『!!support/سيرفر الدعم』
+『!!contact/ارسال اقتراح او لمراسلة صاحب البوت』
 **
   `
 ,`
         ***__Administrative Orders__***
 **
-『%move @user /  لسحب الشخص الى روومك』
-『%voiceonline /  لتفعيل خاصيه فويس اونلاين يسحب عدد الاشخاص موجودين برومات』
-『%bc / رسالة جماعية الى كل اعضاء السيرفر』
-『%bcrole / لارسال رساله جماعي لرتبه محدده يجب تمنشنها 』
-『%role @user <rank> / لأعطاء رتبة لعضو معين』
-『%roleremove @user <rank> / لازالة الرتبة من شخص معين』
-『%role all <rank> / لأعطاء رتبة للجميع』
-『%role humans <rank> / لأعطاء رتبة للاشخاص فقط』
-『%role bots <rank> / لأعطاء رتبة لجميع البوتات』
-『%hchannel / اخفاء الشات』
-『%schannel / اضهار الشات المخفية』
-『%clr <numbr> / مسح الشات بعدد』
-『%clear / مسح الشات』
-『%mute @user <reason> / اعطاء العضو ميوت لازم رتبة <Muted>』
-『%unmute @user / لفك الميوت عن الشخص 』
-『%kick @user <reason> / طرد الشخص من السيرفر』
-『%ban @user <reason> / حضر الشخص من السيرفر』
-『%mutechannel / تقفيل الشات』
-『%unmutechannel / فتح الشات』
-『%dc / مسح كل الرومات』
-『%dr / <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات』
-『%ct <name> / انشاء شات』
-『%cv <name> / انشاء رووم فويس』
-『%delet <name> / مسح الشات او الرووم فويس』
-『%ccolors <number> / ينشا لك الوان مع كم الوان تبي』
-   `,`		   `,`
+『!!move @user /  لسحب الشخص الى روومك』
+『!!voiceonline /  لتفعيل خاصيه فويس اونلاين يسحب عدد الاشخاص موجودين برومات』
+『!!bc / رسالة جماعية الى كل اعضاء السيرفر』
+『!!bcrole / لارسال رساله جماعي لرتبه محدده يجب تمنشنها 』
+『!!role @user <rank> / لأعطاء رتبة لعضو معين』
+『!!roleremove @user <rank> / لازالة الرتبة من شخص معين』
+『!!role all <rank> / لأعطاء رتبة للجميع』
+『!!role humans <rank> / لأعطاء رتبة للاشخاص فقط』
+『!!role bots <rank> / لأعطاء رتبة لجميع البوتات』
+『!!hchannel / اخفاء الشات』
+『!!schannel / اضهار الشات المخفية』
+『!!clr <numbr> / مسح الشات بعدد』
+『!!clear / مسح الشات』
+『!!mute @user <reason> / اعطاء العضو ميوت لازم رتبة <Muted>』
+『!!unmute @user / لفك الميوت عن الشخص 』
+『!!kick @user <reason> / طرد الشخص من السيرفر』
+『!!ban @user <reason> / حضر الشخص من السيرفر』
+『!!mutechannel / تقفيل الشات』
+『!!unmutechannel / فتح الشات』
+『!!dc / مسح كل الرومات』
+『!!dr / <مسح كل الرانكات <لازم تكون رانك البوت فوق كل الرانكات』
+『!!ct <name> / انشاء شات』
+『!!cv <name> / انشاء رووم فويس』
+『!!delet <name> / مسح الشات او الرووم فويس』
+『❖!!ccolors <number> / ينشا لك الوان مع كم الوان تبي』
+『!!sug/ الإقتراحات』
+   `,`
         ***__Music orders__***
 **
-『%play / لتشغيل أغنية برآبط أو بأسم』
-『%skip / لتجآوز الأغنية الحآلية』
-『%pause / إيقآف الأغنية مؤقتا』
-『%resume / لموآصلة الإغنية بعد إيقآفهآ مؤقتا』
-『%vol / لتغيير درجة الصوت 100 - 0』
-『%stop / لإخرآج البوت من الروم』
-『%np / لمعرفة الأغنية المشغلة حآليا』
-『%queue / لمعرفة قآئمة التشغيل』
-**
-           ***Bot Commands***
-  **
-『%ping/ يعرض لك سرعه اتصال البوت』
-『%uptime/ يعرض لك صار للبوت كم شغال』
-『%support/ سيرفر الدعم القني و المساعده』
-『%invite/ اضافه البوت』
-『%mb/ حاله الاعضاء』
-『%bot/ معلومات عن البوت』
+『${prefix}play / لتشغيل أغنية برآبط أو بأسم』
+『${prefix}skip / لتجآوز الأغنية الحآلية』
+『${prefix}pause / إيقآف الأغنية مؤقتا』
+『${prefix}resume / لموآصلة الإغنية بعد إيقآفهآ مؤقتا』
+『${prefix}vol / لتغيير درجة الصوت 100 - 0』
+『${prefix}stop / لإخرآج البوت من الروم』
+『${prefix}np / لمعرفة الأغنية المشغلة حآليا』
+『${prefix}queue / لمعرفة قآئمة التشغيل』
 **
         ***__Games orders__***
  **       
-『%rps / حجر ورقة مقص』
-『%speed / اسرع كتابة』
-『%quas / اسئلة عامة』
-『%نكت / نكت 』
-『%لعبة فكك / فكك』
-『%عواصم عشوائي/عواصم』
-『%لعبة كت تويت / كت تويت』
-『%roll <number> / قرعة』
-『%لو خيروك بطريقة حلوة / لو خيروك』
-『%لعبة مريم / مريم』
-『%فوائد ونصائح  / هل تعلم』
-『%يعطيك عقابات قاسية / عقاب 』
-『%يعطيك ذكر من الاذكار/ اذكار』
-『%لعبه صراحه/صراحه』
+『!!rps / حجر ورقة مقص』
+『!!speed / اسرع كتابة』
+『!!quas / اسئلة عامة』
+『!!نكت / نكت 』
+『!!لعبة فكك / فكك』
+『!!عواصم عشوائي/عواصم』
+『!!لعبة كت تويت / كت تويت』
+『!!roll <number> / قرعة』
+『!!لو خيروك بطريقة حلوة / لو خيروك』
+『!!لعبة مريم / مريم』
+『!!فوائد ونصائح  / هل تعلم』
+『!!يعطيك عقابات قاسية / عقاب 』
 
 
 **
@@ -828,7 +747,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 	.setDescription(`:notes: الان يتم تشغيل : **${serverQueue.songs[0].title}**`)
 		return msg.channel.sendEmbed(embedNP);
 	} else if (command === `queue`) {
-				
+		
 		if (!serverQueue) return msg.channel.send('لا يوجد شيء حالي ف العمل.');
 		let index = 0;
 		
@@ -919,7 +838,7 @@ function play(guild, song) {
 	dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
-	
+}
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
@@ -982,197 +901,6 @@ const codes = {
   );
   };
   });
-  
-  /*اقتراح*/
-
-client.on('message' , message => {
-        if (message.author.bot) return;
-        if (message.content.startsWith(prefix + "sug")) {
-        if (!message.channel.guild) return;
-        let args = message.content.split(" ").slice(1).join(" ");
-        client.channels.get("444186851390128148").send(
-            "\n" + "**" + " ● Suggested By : " + "**" +
-            "\n" + "**" + "» " + message.author.tag + "**" +
-            "\n" + "**" + " ● Suggest : " + "**" +
-            "\n" + "**" + args + "**")
-        
-        let embed = new Discord.RichEmbed()
-             .setAuthor(message.author.username, message.author.avatarURL)
-             .setDescription(' Suggested Sent')
-             .setThumbnail(message.author.avatarURL)
-             .setFooter("Adidas")
-        message.channel.send(embed);
-}
- });
- 
- /*وقت وتاريخ*/
-       
-    client.on('message', message => {
-        if (message.content === prefix + "dt") {
-            if (!message.channel.guild) return message.reply('** This command only for servers **');  
-var currentTime = new Date(),
-            hours = currentTime.getHours() + 0 ,
-            minutes = currentTime.getMinutes(),
-            seconds = currentTime.getSeconds();
-            Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate();
-
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
-            var suffix = 'صباحاَ';
-            if (hours >= 12) {
-                suffix = 'مساء';
-                hours = hours - 12;
-            }
-            if (hours == 0) {
-                hours = 12;
-            }
-
-
-                var Date15= new Discord.RichEmbed()
-                .setThumbnail(message.author.avatarURL) 
-                .setTitle("**الوقت وتاريخ**")
-                .setColor('RANDOM')
-                .setTimestamp()
-                .addField('Time',
-                "『"+ hours + ":" + minutes + "』") 
-                .addField('Date',
-                "『"+ Day + "-" + Month + "-" + Year + "』")
-
-                 message.channel.sendEmbed(Date15);
-  );
-  };
-  });
-
-/*ادكار*/
-
-const adkar = [
-  '**اذكار  | **اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ.',
-  '**اذكار  |  **اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى. ',
-  '**اذكار  ‏|  **اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، دِقَّهُ، وَجِلَّهُ، وَأَوَّلَهُ، وَآخِرَهُ، وَعَلَانِيَتَهُ، وَسِرَّهُ. ',
-  '**‏اذكار  |  **أستغفر الله .',     
-  '**‏اذكار  | **الْلَّهُ أَكْبَرُ',
-  '**‏اذكار  |  **لَا إِلَهَ إِلَّا اللَّهُ',
-  '**اذكار  |  **اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ , وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ , اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ.',
-  '**اذكار  |  **سُبْحَانَ الْلَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا الْلَّهُ، وَالْلَّهُ أَكْبَرُ',
-  '**اذكار  | **لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلُّ شَيْءِ قَدِيرِ.',
-  '**اذكار  | **أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ',
-  '**‏اذكار  | **سُبْحـانَ اللهِ وَبِحَمْـدِهِ. ',
-  '‏**اذكار**|  لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ.',
-  '**اذكار  ‏|   **اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا.',
-  '**اذكار  | ‏ **يَا رَبِّ , لَكَ الْحَمْدُ كَمَا يَنْبَغِي لِجَلَالِ وَجْهِكَ , وَلِعَظِيمِ سُلْطَانِكَ.',
-  'اذكار    |  **أسْتَغْفِرُ اللهَ العَظِيمَ الَّذِي لاَ إلَهَ إلاَّ هُوَ، الحَيُّ القَيُّومُ، وَأتُوبُ إلَيهِ.**',
-  '**‏اذكار  |  **اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ أَنْ نُشْرِكَ بِكَ شَيْئًا نَعْلَمُهُ ، وَنَسْتَغْفِرُكَ لِمَا لَا نَعْلَمُهُ.',
-  '**‏اذكار  |  **اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ على نَبِيِّنَا مُحمَّد. ',
-  '**‏اذكار  |  **أَعـوذُ بِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق.',
-  '**اذكار  |  **يَا حَيُّ يَا قيُّومُ بِرَحْمَتِكَ أسْتَغِيثُ أصْلِحْ لِي شَأنِي كُلَّهُ وَلاَ تَكِلْنِي إلَى نَفْسِي طَـرْفَةَ عَيْنٍ. ',
-  '**اذكار  |  **اللّهُـمَّ إِنّـي أَعـوذُ بِكَ مِنَ الْكُـفر ، وَالفَـقْر ، وَأَعـوذُ بِكَ مِنْ عَذابِ القَـبْر ، لا إلهَ إلاّ أَنْـتَ.',
-  '**‏اذكار  |  **اللّهُـمَّ عافِـني في بَدَنـي ، اللّهُـمَّ عافِـني في سَمْـعي ، اللّهُـمَّ عافِـني في بَصَـري ، لا إلهَ إلاّ أَنْـتَ.',
-  '**‏اذكار  |  **سُبْحـانَ اللهِ وَبِحَمْـدِهِ عَدَدَ خَلْـقِه ، وَرِضـا نَفْسِـه ، وَزِنَـةَ عَـرْشِـه ، وَمِـدادَ كَلِمـاتِـه. ',
-  '**‏اذكار  |  **اللّهُـمَّ بِكَ أَصْـبَحْنا وَبِكَ أَمْسَـينا ، وَبِكَ نَحْـيا وَبِكَ نَمُـوتُ وَإِلَـيْكَ النُّـشُور.',
-  '**‏اذكار  |  **بِسـمِ اللهِ الذي لا يَضُـرُّ مَعَ اسمِـهِ شَيءٌ في الأرْضِ وَلا في السّمـاءِ وَهـوَ السّمـيعُ العَلـيم. ',
-  '**‏اذكار  |  **حَسْبِـيَ اللّهُ لا إلهَ إلاّ هُوَ عَلَـيهِ تَوَكَّـلتُ وَهُوَ رَبُّ العَرْشِ العَظـيم.',
-  '**اذكار  |  **اللّهُـمَّ ما أَصْبَـَحَ بي مِـنْ نِعْـمَةٍ أَو بِأَحَـدٍ مِـنْ خَلْـقِك ، فَمِـنْكَ وَحْـدَكَ لا شريكَ لَـك ، فَلَـكَ الْحَمْـدُ وَلَـكَ الشُّكْـر.',
-  '**‏اذكار  |  **اللّهُـمَّ إِنِّـي أَصْبَـحْتُ أُشْـهِدُك ، وَأُشْـهِدُ حَمَلَـةَ عَـرْشِـك ، وَمَلَائِكَتَكَ ، وَجَمـيعَ خَلْـقِك ، أَنَّـكَ أَنْـتَ اللهُ لا إلهَ إلاّ أَنْـتَ وَحْـدَكَ لا شَريكَ لَـك ، وَأَنَّ ُ مُحَمّـداً عَبْـدُكَ وَرَسـولُـك',
-  '**‏اذكار  |  **رَضيـتُ بِاللهِ رَبَّـاً وَبِالإسْلامِ ديـناً وَبِمُحَـمَّدٍ صلى الله عليه وسلم نَبِيّـاً',
-  '**‏اذكار  |  **اللهم إني أعوذ بك من العجز، والكسل، والجبن، والبخل، والهرم، وعذاب القبر، اللهم آت نفسي تقواها، وزكها أنت خير من زكاها. أنت وليها ومولاها. اللهم إني أعوذ بك من علم لا ينفع، ومن قلب لا يخشع، ومن نفس لا تشبع، ومن دعوة لا يستجاب لها',
-  '**‏اذكار  |  **اللهم إني أعوذ بك من شر ما عملت، ومن شر ما لم أعمل',
-  '**‏اذكار  |  **اللهم مصرف القلوب صرف قلوبنا على طاعتك',
-]
-client.on('message', message => {
-if (message.author.bot) return;
-if (message.content.startsWith(prefix + "ادكار")) {
-  if(!message.channel.guild) return;
-var client= new Discord.RichEmbed()
-.setTitle("اذكار")
-.setThumbnail(message.author.avatarURL)
-.setColor('RANDOM')
-.setDescription(`${adkar[Math.floor(Math.random() * adkar.length)]}`)
-               .setTimestamp()
-message.channel.sendEmbed(client);
-message.react("??")
-}
-});
-
-/*صراحة*/
-
-const Sra7a = [
-     'صراحه  |  صوتك حلوة؟',
-     'صراحه  |  التقيت الناس مع وجوهين؟',
-     'صراحه  |  شيء وكنت تحقق اللسان؟',
-     'صراحه  |  أنا شخص ضعيف عندما؟',
-     'صراحه  |  هل ترغب في إظهار حبك ومرفق لشخص أو رؤية هذا الضعف؟',
-     'صراحه  |  يدل على أن الكذب مرات تكون ضرورية شي؟',
-     'صراحه  |  أشعر بالوحدة على الرغم من أنني تحيط بك كثيرا؟',
-     'صراحه  |  كيفية الكشف عن من يكمن عليك؟',
-     'صراحه  |  إذا حاول شخص ما أن يكرهه أن يقترب منك ويهتم بك تعطيه فرصة؟',
-     'صراحه  |  أشجع شيء حلو في حياتك؟',
-     'صراحه  |  طريقة جيدة يقنع حتى لو كانت الفكرة خاطئة" توافق؟',
-     'صراحه  |  كيف تتصرف مع من يسيئون فهمك ويأخذ على ذهنه ثم ينتظر أن يرفض؟',
-     'صراحه  |  التغيير العادي عندما يكون الشخص الذي يحبه؟',
-     'صراحه  |  المواقف الصعبة تضعف لك ولا ترفع؟',
-     'صراحه  |  نظرة و يفسد الصداقة؟',
-     'صراحه  |  ‏‏إذا أحد قالك كلام سيء بالغالب وش تكون ردة فعلك؟',
-     'صراحه  |  شخص معك بالحلوه والمُره؟',
-     'صراحه  |  ‏هل تحب إظهار حبك وتعلقك بالشخص أم ترى ذلك ضعف؟',
-     'صراحه  |  تأخذ بكلام اللي ينصحك ولا تسوي اللي تبي؟',
-     'صراحه  |  وش تتمنى الناس تعرف عليك؟',
-     'صراحه  |  ابيع المجرة عشان؟',
-     'صراحه  |  أحيانا احس ان الناس ، كمل؟',
-     'صراحه  |  مع مين ودك تنام اليوم؟',
-     'صراحه  |  صدفة العمر الحلوة هي اني؟',
-     'صراحه  |  الكُره العظيم دايم يجي بعد حُب قوي " تتفق؟',
-     'صراحه  |  صفة تحبها في نفسك؟',
-     'صراحه  |  ‏الفقر فقر العقول ليس الجيوب " ، تتفق؟',
-     'صراحه  |  تصلي صلواتك الخمس كلها؟',
-     'صراحه  |  ‏تجامل أحد على راحتك؟',
-     'صراحه  |  اشجع شيء سويتة بحياتك؟',
-     'صراحه  |  وش ناوي تسوي اليوم؟',
-     'صراحه  |  وش شعورك لما تشوف المطر؟',
-     'صراحه  |  غيرتك هاديه ولا تسوي مشاكل؟',
-     'صراحه  |  ما اكثر شي ندمن عليه؟',
-     'صراحه  |  اي الدول تتمنى ان تزورها؟',
-     'صراحه  |  متى اخر مره بكيت؟',
-     'صراحه  |  تقيم حظك ؟ من عشره؟',
-     'صراحه  |  هل تعتقد ان حظك سيئ؟',
-     'صراحه  |  شـخــص تتمنــي الإنتقــام منـــه؟',
-     'صراحه  |  كلمة تود سماعها كل يوم؟',
-     'صراحه  |  **هل تُتقن عملك أم تشعر بالممل؟',
-     'صراحه  |  هل قمت بانتحال أحد الشخصيات لتكذب على من حولك؟',
-     'صراحه  |  متى آخر مرة قمت بعمل مُشكلة كبيرة وتسببت في خسائر؟',
-     'صراحه  |  ما هو اسوأ خبر سمعته بحياتك؟',
-     '‏صراحه | هل جرحت شخص تحبه من قبل ؟',
-     'صراحه  |  ما هي العادة التي تُحب أن تبتعد عنها؟',
-     '‏صراحه | هل تحب عائلتك ام تكرههم؟',
-     '‏صراحه  |  من هو الشخص الذي يأتي في قلبك بعد الله – سبحانه وتعالى- ورسوله الكريم – صلى الله عليه وسلم؟',
-     '‏صراحه  |  هل خجلت من نفسك من قبل؟',
-     '‏صراحه  |  ما هو ا الحلم  الذي لم تستطيع ان تحققه؟',
-     '‏صراحه  |  ما هو الشخص الذي تحلم به كل ليلة؟',
-     '‏صراحه  |  هل تعرضت إلى موقف مُحرج جعلك تكره صاحبهُ؟',
-	  '‏صراحه  |  هل قمت بالبكاء أمام من تُحب؟',
-     '‏صراحه  |  ماذا تختار حبيبك أم صديقك؟',
-     '‏صراحه  | هل حياتك سعيدة أم حزينة؟',
-     'صراحه  |  ما هي أجمل سنة عشتها بحياتك؟',
-     '‏صراحه  |  ما هو عمرك الحقيقي؟',
-     '‏صراحه  |  ما اكثر شي ندمن عليه؟',
-	 'صراحه  |  ما هي أمنياتك المُستقبلية؟‏',
-]
-   client.on('message', message => {
- if (message.content.startsWith(prefix + "صراحة")) {
-     if(!message.channel.guild) return message.reply('** This command only for servers **');
-  var client= new Discord.RichEmbed()
-  .setTitle("لعبة صراحة ..")
-  .setColor('RANDOM')
-  .setDescription(`${Sra7a[Math.floor(Math.random() * Sra7a.length)]}`)
-  .setImage("https://cdn.discordapp.com/attachments/371269161470525444/384103927060234242/125.png")
-                  .setTimestamp()
-
-   message.channel.sendEmbed(client);
-   message.react("??")
- }
-});
 
 var Za7f = [
   "**صورة وجهك او رجلك او خشمك او يدك**.",
@@ -1227,6 +955,94 @@ var Za7f = [
     "**خلاص سامحتك**.",
     "** تصيح في الشارع انا  مجنوون**.",
     "** تروح عند شخص تقول له احبك**.",
+
+];
+
+client.on('message', message => {
+ if (message.content.startsWith("!!عقاب")) {
+              if(!message.channel.guild) return message.reply('** This command only for servers**');
+var embed = new Discord.RichEmbed()
+.setColor('RANDOM')
+ .setThumbnail(message.author.avatarURL) 
+.addField('S_C BOT' ,
+`${Za7f[Math.floor(Math.random() * Za7f.length)]}`)
+message.channel.sendEmbed(embed);
+console.log('[38ab] Send By: ' + message.author.username)
+  }
+});
+
+client.on('message', ra3d => {
+var prefix = "#";
+                        let args = ra3d.content.split(" ").slice(1).join(" ")
+if(ra3d.content.startsWith(prefix + 'ccolors')) {
+    if(!args) return ra3d.channel.send('`يرجي اختيار كم لون `');
+             if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
+              ra3d.channel.send(`**✅ |Created __${args}__ Colors**`);
+                  setInterval(function(){})
+                    let count = 0;
+                    let ecount = 0;
+          for(let x = 1; x < `${parseInt(args)+1}`; x++){
+            ra3d.guild.createRole({name:x,
+              color: 'RANDOM'})
+              }
+            }
+       });
+
+client.on('message', message => {
+var prefix = "!!";
+var cats = ["http://www.shuuf.com/shof/uploads/2015/09/09/jpg/shof_b9d73150f90a594.jpg","https://haltaalam.info/wp-content/uploads/2015/05/0.208.png","https://haltaalam.info/wp-content/uploads/2015/05/266.png","https://haltaalam.info/wp-content/uploads/2015/05/250.png","https://haltaalam.info/wp-content/uploads/2017/02/0.2517.png","https://pbs.twimg.com/media/CP0mi02UAAA3U2z.png","http://www.shuuf.com/shof/uploads/2015/08/31/jpg/shof_3b74fa7295ec445.jpg","http://www.shuuf.com/shof/uploads/2015/08/22/jpg/shof_fa3be6ab68fb415.jpg","https://pbs.twimg.com/media/CSWPvmRUcAAeZbt.png","https://pbs.twimg.com/media/B18VworIcAIMGsE.png"]
+        var args = message.content.split(" ").slice(1);
+    if(message.content.startsWith(prefix + 'هل تعلم')) {
+         var cat = new Discord.RichEmbed()
+.setImage(cats[Math.floor(Math.random() * cats.length)])
+message.channel.sendEmbed(cat);
+    }
+});
+
+const zead = [
+   '*** انا اسمي مريم ***',
+   '*** مرحباَ ماهو اسمك ؟ ***',
+   `*** اهلا بك # انا تائهه في هذا المكان  ***`,
+   '*** هل تود مساعدتي ؟ ***',
+   '*** لماذا هل انت قاسي القلب ؟ ***',
+   '*** انني اشفق عليك يجب ان تطهر روحك وتحب الخير للجميع ***',
+   '*** ابتعد عني قليل انني متعبة ***',
+	 '*** هل انت نادم على ماقلت ؟ ***',
+   '*** هل تود مساعدتي ؟ ***',
+   '*** واو اشكرك انك شخصاَ رائع ! ***',
+   '*** ابحث معي عن منزلي لقد كان قريباَ من هنا ***',
+   '*** ولاكن عندما حل الليل لم اعد ارى اي شيء ***',
+   '*** مذا تظن اين يوجد ؟ يمين او يسار ***',
+   '*** هيا اذاَ ***',
+   '*** اود ان اسئلك سؤال ونحن في الطريق ***',
+   '*** هل تراني فتاة لطيفة ام مخيفة ***',
+   '*** اشكرك !  ***',
+   '*** لقد وصلنا الى المنزل شكراَ جزيلَ انتطرني ثواني وسوف اعود ***',
+   '*** هل انت جاهز ؟ ***',
+   '*** لقد اخبرت والدي عنك وهم متحمسين لرؤيتك ***',
+   '*** هل تود ان تراهم الان ***',
+'*** انا لست الحوت الازرق كما يدعون ***',
+   '*** انا لست كاذبة صدقني***',
+   '*** لماذا ارى في عينيك الخوف ؟ ***',
+   '*** انا مجرد فتاة لطيفة تحب اللعب مع الجميع ***',
+   '*** اعرف كل شيء يحدث اسمع ذالك بالراديو ***',
+   '*** سمعت ان البشر يقتلون من اجل المال فقط ***',
+   '*** لماذا لم تدخل الغرفة ؟ ***',
+   '*** ههههههههههههههههههه انت الان مسجون في هذه الغرفة ***',
+   '*** لن تخرج حتى اعود لك بعد قليل ***',
+   '*** المفتاح معك ! اكتب .مريم  ***',
+   '*** مفتاح احمر , هل حصلت عليه ؟ ***',
+   '*** ان لم تحصل عليه , اكتب .مريم مرة اخرى ***',
+   '*** مفتاح اسود . هل حصلت عليه ؟ ***',
+   '*** اين تريد ان تختبئ بسرعة قبل ان تعود ***',
+   '*** لقد عادت من جديد الى المنزل ***',
+   '*** لا تصدر اي صوت ! ***',
+   '*** مريم : لقد عدت ***',
+   '*** مريم : يا ايها المخادع اين انت ***',
+   '*** مريم : اعلم انك هنا في المنزل ***',
+   '*** مريم : ماذا تريد ان تسمع ***',
+   '*** احد ما خرج من المنزل ***',
+   '*** انتظر الجزء الثاني عندما يوصل البوت 100 سيرفر , ساعدني في نشر البوت وادخل هذا السيرفر  ***'
 ];
  client.on('message', message => {
  if (message.content.startsWith('!!مريم')) {
@@ -1239,6 +1055,27 @@ var Za7f = [
   }
 });
 
+/*اقتراح*/
+
+client.on('message' , message => {
+        if (message.author.bot) return;
+        if (message.content.startsWith(prefix + "!!sug")) {
+        if (!message.channel.guild) return;
+        let args = message.content.split(" ").slice(1).join(" ");
+        client.channels.get("444186851390128148").send(
+            "\n" + "**" + " ● Suggested By : " + "**" +
+            "\n" + "**" + "» " + message.author.tag + "**" +
+            "\n" + "**" + " ● Suggest : " + "**" +
+            "\n" + "**" + args + "**")
+        
+        let embed = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .setDescription(' Suggested Sent')
+             .setThumbnail(message.author.avatarURL)
+             .setFooter("Adidas")
+        message.channel.send(embed);
+}
+ });
 const Langs = ['afrikaans', 'albanian', 'amharic', 'arabic', 'armenian', 'azerbaijani', 'bangla', 'basque', 'belarusian', 'bengali', 'bosnian', 'bulgarian', 'burmese', 'catalan', 'cebuano', 'chichewa', 'chinese simplified', 'chinese traditional', 'corsican', 'croatian', 'czech', 'danish', 'dutch', 'english', 'esperanto', 'estonian', 'filipino', 'finnish', 'french', 'frisian', 'galician', 'georgian', 'german', 'greek', 'gujarati', 'haitian creole', 'hausa', 'hawaiian', 'hebrew', 'hindi', 'hmong', 'hungarian', 'icelandic', 'igbo', 'indonesian', 'irish', 'italian', 'japanese', 'javanese', 'kannada', 'kazakh', 'khmer', 'korean', 'kurdish (kurmanji)', 'kyrgyz', 'lao', 'latin', 'latvian', 'lithuanian', 'luxembourgish', 'macedonian', 'malagasy', 'malay', 'malayalam', 'maltese', 'maori', 'marathi', 'mongolian', 'myanmar (burmese)', 'nepali', 'norwegian', 'nyanja', 'pashto', 'persian', 'polish', 'portugese', 'punjabi', 'romanian', 'russian', 'samoan', 'scottish gaelic', 'serbian', 'sesotho', 'shona', 'sindhi', 'sinhala', 'slovak', 'slovenian', 'somali', 'spanish', 'sundanese', 'swahili', 'swedish', 'tajik', 'tamil', 'telugu', 'thai', 'turkish', 'ukrainian', 'urdu', 'uzbek', 'vietnamese', 'welsh', 'xhosa', 'yiddish', 'yoruba', 'zulu'];
 
 client.on('message', message => {
@@ -1375,7 +1212,7 @@ message.channel.sendEmbed(embed)
 });
 
 client.on("message",function(message) {
-	var prefix = "%";
+	var prefix = "!!";
     if(message.content.startsWith(prefix + 'bot')) {
         var uptime = client.uptime;
  
@@ -1415,7 +1252,7 @@ client.on("message",function(message) {
 var v1 = new Discord.RichEmbed()
   v1.setTimestamp(new Date())
   v1.setColor("#6a109d")
-    v1.setDescription('***__ انتظر .. جاري الحصول علي البيانات __***')
+  v1.setDescription('***__ انتظر .. جاري الحصول علي البيانات __***')
   v1.setFooter("# | Malicious™ TeaM |")
 var heroo = new Discord.RichEmbed()
 .setColor('#6a109d')
@@ -1441,7 +1278,7 @@ var heroo = new Discord.RichEmbed()
 }
 });
 client.on("message", message => {
-    var prefix = "%"
+    var prefix = "!!"
     if (!message.content.startsWith(prefix)) return;
       let command = message.content.split(" ")[0];
       command = command.slice(prefix.length);
@@ -1639,7 +1476,7 @@ if(message.content === `${prefix}voiceonline`) {
 
 client.on("message", async message => {
             if(!message.channel.guild) return;
-            var prefix = "%";
+            var prefix = "!!";
         if(message.content.startsWith(prefix + 'invites')) {
         var nul = 0
         var guild = message.guild
@@ -2006,7 +1843,7 @@ const type = [
     {
             "type": "https://cdn.discordapp.com/attachments/429330153735454722/430040666895024128/8bc7742b95673c38.png",
         "answers": ["حبيت مره من قلبي"]
-		
+ 
               },
     {
             "type": "https://cdn.discordapp.com/attachments/429330153735454722/430040674067546113/9d1a9eee36622271.png",
@@ -2102,7 +1939,7 @@ if (!points[message.author.id]) points[message.author.id] = {
         r = 15*1000 - r;
     message.channel.send(`**Sorry, Please Wait ${pretty(r, {verbose:true})}...**`).then(m => m.delete(5000));
     return;
-	    }
+    }
     if ( message.content == prefix+'speed'){
        
         try{
@@ -2124,7 +1961,7 @@ message.channel.send('**Game is Start now...!**').then(msg => {
      .setAuthor(`⏳ |You have »15« seconds to type the word`)
           .setImage(`${item.type}`)
  .setFooter(`${message.author.tag}`, message.author.avatarURL)
-  
+ 
  
          
 msg.channel.send(embed).then(() => {
@@ -2166,7 +2003,7 @@ if (message.content.startsWith(prefix + 'perms')) {
 
 
  client.on('message', message => {
-	 var prefix = "%";
+	 var prefix = "!!";
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -2252,7 +2089,7 @@ client.on('message', message => {
 var AsciiTable = require('ascii-data-table').default
 client.on('message', message =>{
 
-    if(message.content == "%roles"){
+    if(message.content == "!!roles"){
         var 
         ros=message.guild.roles.size,
         data = [['Rank', 'RoleName']]
@@ -2284,7 +2121,7 @@ var prefix = "!!";
 
 
 client.on('message', message => {
-var prefix = "%";
+var prefix = "!!";
       if(message.content === prefix + "schannel") {
       if(!message.channel.guild) return;
       if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply(':x:');
@@ -2506,7 +2343,12 @@ var fkk =[
 });
 
 
- 
+
+
+
+   client.on("message", async message => {
+var prefix = "!!";
+var aoasm =[
     {q:"ما عاصمة **المغرب**",a:"الرباط"},
     {q:"ما عاصمة **افغانستان**",a:"كبل"},
     {q:"ما عاصمة ** البانيا**",a:"تيران"},
@@ -2607,7 +2449,7 @@ var fkk =[
 });
 
 client.on("message", message => {
-    const prefix = "%"
+    const prefix = "!!"
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
@@ -3124,7 +2966,7 @@ client.on("guildMemberAdd", member => {
                               ava.src = buf;
                               ctx.beginPath();
                  ctx.arc(120.8, 120.5, 112.3, 0, Math.PI*2, true);
-                   ctx.closePath(
+                   ctx.closePath();
                    
                                  ctx.clip();
 
