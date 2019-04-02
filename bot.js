@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const devs = ['546457241386090496',''];
+const devs = ['538841860160880654',''];
 var prefix = "!!";
 const adminprefix = "!!"
 const db = require('quick.db');
@@ -564,7 +564,6 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
 『!!rps / حجر ورقة مقص』
 『!!speed / اسرع كتابة』
 『!!quas / اسئلة عامة』
-『!!نكت / نكت 』
 『!!لعبة فكك / فكك』
 『!!عواصم عشوائي/عواصم』
 『!!لعبة كت تويت / كت تويت』
